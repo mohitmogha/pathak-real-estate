@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,13 @@
   <script>
     tailwind.config = {
       theme: {
+        screens: {
+          'xs': '390px',
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px',
+        },
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'Roboto', 'sans-serif'],
@@ -64,15 +71,15 @@
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-12px)' },
+              '50%': { transform: 'translateY(-8px)' },
             },
             pulseSubtle: {
               '0%, 100%': { opacity: 1, transform: 'scale(1)' },
-              '50%': { opacity: 0.85, transform: 'scale(1.03)' },
+              '50%': { opacity: 0.85, transform: 'scale(1.02)' },
             },
             radar: {
               '0%': { transform: 'scale(0.8)', opacity: '0.9' },
-              '100%': { transform: 'scale(2.2)', opacity: '0' },
+              '100%': { transform: 'scale(2.1)', opacity: '0' },
             },
             gradientShift: {
               '0%': { backgroundPosition: '0% 50%' },
@@ -123,6 +130,10 @@
   </script>
 
   <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       vertical-align: middle;
@@ -148,9 +159,24 @@
       background: rgba(0, 0, 0, 0.08);
       border-radius: inherit;
     }
-    /* Smooth custom scrollbar */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Prevent iOS auto-zoom on inputs */
+    @media (max-width: 767px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
+    /* Smooth custom scrollbar for desktop */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 7px;
     }
     ::-webkit-scrollbar-track {
       background: #f1f3f4;
@@ -164,20 +190,20 @@
     }
   </style>
 </head>
-<body class="font-sans antialiased text-google-textPrimary bg-google-surface flex flex-col min-h-screen selection:bg-google-blueLight selection:text-google-blue">
+<body class="font-sans antialiased text-google-textPrimary bg-google-surface flex flex-col min-h-screen selection:bg-google-blueLight selection:text-google-blue overflow-x-hidden pb-16 md:pb-0">
 
   <!-- GOOGLE M3 TOP APP BAR & ANNOUNCEMENT -->
-  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center gap-2.5">
-        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-[11px] font-semibold font-mono">
+  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-3 sm:px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-2 text-center sm:text-left">
+      <div class="flex items-center flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-2.5">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] sm:text-[11px] font-semibold font-mono">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
           GOOGLE VERIFIED
         </span>
-        <span class="text-slate-300">Prime Locations: <strong class="text-white font-semibold">Jeevan Park</strong>, <strong class="text-white font-semibold">Uttam Nagar</strong> & <strong class="text-white font-semibold">Janak Puri</strong></span>
+        <span class="text-slate-300 text-[11px] sm:text-xs">Prime Locations: <strong class="text-white font-semibold">Jeevan Park</strong>, <strong class="text-white font-semibold">Uttam Nagar</strong> &amp; <strong class="text-white font-semibold">Janak Puri</strong></span>
       </div>
-      <div class="flex items-center gap-4 text-slate-300 text-xs">
-        <span class="hidden md:inline">🕒 Mon–Sun: 9:30 AM – 8:30 PM</span>
+      <div class="hidden sm:flex items-center gap-4 text-slate-300 text-xs">
+        <span>🕒 Mon–Sun: 9:30 AM – 8:30 PM</span>
         <a href="tel:+919352222820" class="hover:text-amber-300 text-amber-400 font-bold transition flex items-center gap-1">
           <span class="material-symbols-outlined text-[15px]">call</span> +91 9352222820
         </a>
@@ -187,23 +213,23 @@
 
   <!-- NAVIGATION BAR (MATERIAL DESIGN 3 SURFACE) -->
   <header class="relative md:sticky md:top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-google-outline/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
       
       <!-- LOGO WITH GOOGLE IDENTITY AESTHETIC -->
-      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
-        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center text-white shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform duration-200 shrink-0">
-          <span class="material-symbols-outlined text-2xl">apartment</span>
+      <a href="#" class="flex items-center gap-2 sm:gap-3 group min-w-0">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform duration-200 shrink-0">
+          <span class="material-symbols-outlined text-xl sm:text-2xl">apartment</span>
         </div>
         <div class="min-w-0">
-          <div class="flex items-center gap-1.5">
-            <span class="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-tight">Pathak Real Estate</span>
-            <span class="material-symbols-outlined text-blue-600 text-lg shrink-0" title="Google Verified Local Agency">verified</span>
+          <div class="flex items-center gap-1 sm:gap-1.5">
+            <span class="text-base sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight leading-tight truncate">Pathak Real Estate</span>
+            <span class="material-symbols-outlined text-blue-600 text-base sm:text-lg shrink-0" title="Google Verified Local Agency">verified</span>
           </div>
-          <span class="text-[10px] sm:text-[11px] text-google-textSecondary font-medium tracking-wide uppercase block truncate max-w-[190px] sm:max-w-none">Jeevan Park • Uttam Nagar • Janak Puri</span>
+          <span class="text-[9px] sm:text-[11px] text-google-textSecondary font-medium tracking-wide uppercase block truncate max-w-[160px] xs:max-w-[210px] sm:max-w-none">Jeevan Park • Uttam Nagar • Janak Puri</span>
         </div>
       </a>
 
-      <!-- NAV CHIPS -->
+      <!-- NAV CHIPS (DESKTOP) -->
       <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-google-textSecondary">
         <a href="#properties" class="px-3.5 py-2 rounded-full hover:bg-google-blueLight hover:text-google-blue transition">Properties</a>
         <a href="#why-us" class="px-3.5 py-2 rounded-full hover:bg-google-blueLight hover:text-google-blue transition">Why Choose Us</a>
@@ -212,13 +238,13 @@
       </nav>
 
       <!-- CTA BUTTONS (M3 BUTTONS) -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
         <a href="https://wa.me/919352222820?text=Hi%20Pathak%20Real%20Estate,%20I%20am%20interested%20in%20properties%20in%20Jeevan%20Park/Uttam%20Nagar/Janakpuri." target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-google-green text-white px-4 py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-emerald-700 shadow-sm active:scale-95 transition-all">
           <span class="material-symbols-outlined text-base">chat</span>
           WhatsApp
         </a>
-        <a href="tel:+919352222820" class="inline-flex items-center gap-2 bg-google-blue hover:bg-google-blueDark text-white px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md shadow-blue-500/25 active:scale-95 transition-all">
-          <span class="material-symbols-outlined text-base">call</span>
+        <a href="tel:+919352222820" class="inline-flex items-center gap-1.5 sm:gap-2 bg-google-blue hover:bg-google-blueDark text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md shadow-blue-500/25 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-sm sm:text-base">call</span>
           <span>Call Now</span>
         </a>
       </div>
@@ -228,67 +254,67 @@
   <!-- ========================================================================= -->
   <!-- HERO SECTION: TWO-PART SPLIT WITH MOTION GRAPHICS & MATERIAL DESIGN 3 -->
   <!-- ========================================================================= -->
-  <section class="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white py-16 lg:py-24 overflow-hidden">
+  <section class="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white py-10 sm:py-16 lg:py-24 overflow-hidden">
     
     <!-- Ambient Animated Mesh Gradient -->
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/25 rounded-full blur-3xl pointer-events-none animate-pulse-subtle"></div>
-    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 left-1/3 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -top-40 -left-40 w-80 sm:w-96 h-80 sm:h-96 bg-blue-600/25 rounded-full blur-3xl pointer-events-none animate-pulse-subtle"></div>
+    <div class="absolute -bottom-40 -right-40 w-80 sm:w-96 h-80 sm:h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/3 w-64 sm:w-80 h-64 sm:h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-center">
         
         <!-- ========================================== -->
         <!-- LEFT PART: TEXT, BADGES & CALL TO ACTION   -->
         <!-- ========================================== -->
-        <div class="lg:col-span-6 space-y-6 text-left">
+        <div class="lg:col-span-6 space-y-4 sm:space-y-6 text-left">
           
           <!-- M3 Verified Chip -->
-          <div class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-200 transition">
-            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white">
-              <span class="material-symbols-outlined text-[13px]">location_on</span>
+          <div class="inline-flex items-center gap-1.5 sm:gap-2 bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold text-slate-200 transition max-w-full truncate">
+            <span class="inline-flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-600 text-white shrink-0">
+              <span class="material-symbols-outlined text-[11px] sm:text-[13px]">location_on</span>
             </span>
-            <span>Google Maps Local 3-Pack Verified Partner</span>
-            <span class="text-amber-400 font-bold ml-1">★ 4.9</span>
+            <span class="truncate">Google Maps Local 3-Pack Verified Partner</span>
+            <span class="text-amber-400 font-bold ml-0.5 sm:ml-1 shrink-0">★ 4.9</span>
           </div>
 
           <!-- M3 Display Headline -->
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.16]">
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] sm:leading-[1.16]">
             Pathak Real Estate <span class="text-slate-400 font-light">—</span> Property Consultant in <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-amber-300">Jeevan Park, Uttam Nagar, Janak Puri &amp; West Delhi</span>
           </h1>
 
           <!-- Value Proposition Body -->
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+          <p class="text-slate-300 text-sm sm:text-lg leading-relaxed max-w-xl">
             Pathak Real Estate is West Delhi's trusted property consultancy. Buy, sell &amp; rent verified builder floors (1/2/3/4 BHK), freehold plots, luxury villas, and commercial shops in <strong>Jeevan Park</strong>, <strong>Uttam Nagar</strong>, and <strong>Janak Puri</strong>.
           </p>
 
           <!-- Dual Call to Action Buttons -->
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
-            <a href="tel:+919352222820" class="inline-flex items-center justify-center gap-2.5 bg-google-blue hover:bg-blue-600 text-white font-bold px-7 py-4 rounded-full shadow-lg shadow-blue-600/30 active:scale-95 transition-all text-sm sm:text-base group">
-              <span class="material-symbols-outlined text-xl group-hover:rotate-12 transition-transform">call</span>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1 sm:pt-2">
+            <a href="tel:+919352222820" class="inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-google-blue hover:bg-blue-600 text-white font-bold px-6 py-3.5 sm:px-7 sm:py-4 rounded-full shadow-lg shadow-blue-600/30 active:scale-95 transition-all text-sm sm:text-base group">
+              <span class="material-symbols-outlined text-lg sm:text-xl group-hover:rotate-12 transition-transform">call</span>
               <span>Call: +91 9352222820</span>
             </a>
             
-            <a href="https://wa.me/919352222820?text=Hi%20Pathak%20Real%20Estate,%20I%20would%20like%20to%20book%20a%20free%20site%20visit." target="_blank" class="inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold px-7 py-4 rounded-full backdrop-blur-md active:scale-95 transition-all text-sm sm:text-base">
-              <span class="material-symbols-outlined text-xl text-emerald-400">calendar_month</span>
+            <a href="https://wa.me/919352222820?text=Hi%20Pathak%20Real%20Estate,%20I%20would%20like%20to%20book%20a%20free%20site%20visit." target="_blank" class="inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold px-6 py-3.5 sm:px-7 sm:py-4 rounded-full backdrop-blur-md active:scale-95 transition-all text-sm sm:text-base">
+              <span class="material-symbols-outlined text-lg sm:text-xl text-emerald-400">calendar_month</span>
               <span>Book Free Site Visit</span>
             </a>
           </div>
 
           <!-- M3 Trust Metrics Strip -->
-          <div class="grid grid-cols-3 gap-3 pt-6 border-t border-white/10 max-w-lg">
-            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
-              <div class="text-2xl font-black text-amber-400">100%</div>
-              <div class="text-[11px] text-slate-300 font-medium">Clear Registry Title</div>
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-5 sm:pt-6 border-t border-white/10 max-w-lg">
+            <div class="p-2 sm:p-3 rounded-2xl bg-white/5 border border-white/10 text-center sm:text-left">
+              <div class="text-xl sm:text-2xl font-black text-amber-400">100%</div>
+              <div class="text-[10px] sm:text-[11px] text-slate-300 font-medium leading-tight">Clear Registry Title</div>
             </div>
-            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
-              <div class="text-2xl font-black text-sky-400">80-90%</div>
-              <div class="text-[11px] text-slate-300 font-medium">Bank Loan Approval</div>
+            <div class="p-2 sm:p-3 rounded-2xl bg-white/5 border border-white/10 text-center sm:text-left">
+              <div class="text-xl sm:text-2xl font-black text-sky-400">80-90%</div>
+              <div class="text-[10px] sm:text-[11px] text-slate-300 font-medium leading-tight">Bank Loan Approval</div>
             </div>
-            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
-              <div class="text-2xl font-black text-emerald-400">500+</div>
-              <div class="text-[11px] text-slate-300 font-medium">Happy Families</div>
+            <div class="p-2 sm:p-3 rounded-2xl bg-white/5 border border-white/10 text-center sm:text-left">
+              <div class="text-xl sm:text-2xl font-black text-emerald-400">500+</div>
+              <div class="text-[10px] sm:text-[11px] text-slate-300 font-medium leading-tight">Happy Families</div>
             </div>
           </div>
 
@@ -297,75 +323,75 @@
         <!-- ============================================================== -->
         <!-- RIGHT PART: CREATIVE MOTION GRAPHICS & INTERACTIVE VISUALIZER -->
         <!-- ============================================================== -->
-        <div class="lg:col-span-6 relative flex items-center justify-center">
+        <div class="lg:col-span-6 relative flex items-center justify-center w-full px-1 xs:px-2 sm:px-0">
           
           <!-- Outer Motion Graphics Container -->
-          <div class="relative w-full max-w-[480px] aspect-square flex items-center justify-center">
+          <div class="relative w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[440px] lg:max-w-[480px] flex items-center justify-center py-5 sm:py-8">
             
             <!-- Radar Sonar Wave (Google Maps Locator Effect) -->
-            <div class="absolute w-64 h-64 rounded-full border border-blue-500/30 animate-radar-wave pointer-events-none"></div>
-            <div class="absolute w-80 h-80 rounded-full border border-sky-400/20 animate-radar-wave pointer-events-none" style="animation-delay: 1s;"></div>
-            <div class="absolute w-96 h-96 rounded-full border border-indigo-400/15 animate-radar-wave pointer-events-none" style="animation-delay: 2s;"></div>
+            <div class="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-blue-500/30 animate-radar-wave pointer-events-none"></div>
+            <div class="absolute w-60 h-60 sm:w-80 sm:h-80 rounded-full border border-sky-400/20 animate-radar-wave pointer-events-none" style="animation-delay: 1s;"></div>
+            <div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full border border-indigo-400/15 animate-radar-wave pointer-events-none" style="animation-delay: 2s;"></div>
 
             <!-- Rotating Compass Ring with Google Tech Aesthetic -->
-            <div class="absolute inset-4 rounded-full border border-dashed border-white/15 animate-spin-slow pointer-events-none"></div>
+            <div class="absolute inset-2 sm:inset-4 rounded-full border border-dashed border-white/15 animate-spin-slow pointer-events-none"></div>
 
             <!-- CENTRAL SHOWCASE CARD (Primary Hero Visualizer) -->
-            <div class="relative z-20 w-[90%] sm:w-[85%] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900/90 backdrop-blur-xl group hover:scale-[1.02] transition-transform duration-500">
+            <div class="relative z-20 w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 sm:border-2 bg-slate-900/90 backdrop-blur-xl group hover:scale-[1.01] sm:hover:scale-[1.02] transition-transform duration-500">
               
               <!-- Property Image with Gradient Overlay -->
-              <div class="h-56 sm:h-64 relative overflow-hidden">
+              <div class="h-44 xs:h-52 sm:h-64 relative overflow-hidden">
                 <img id="heroVisualImage" src="images/post1_builder_floor_flats.jpg" alt="Pathak Real Estate Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                 
                 <!-- Top Status Chips -->
-                <div class="absolute top-3.5 left-3.5 flex items-center gap-2">
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow-md">
-                    <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                <div class="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 flex items-center gap-1.5 sm:gap-2">
+                  <span class="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-600 text-white shadow-md">
+                    <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white animate-ping"></span>
                     FEATURED LISTING
                   </span>
-                  <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/60 text-white backdrop-blur-md">
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-semibold bg-black/60 text-white backdrop-blur-md">
                     📍 Jeevan Park
                   </span>
                 </div>
 
                 <!-- Price Tag Bottom Left -->
-                <div class="absolute bottom-3 left-4">
-                  <span class="text-xs text-slate-300 font-medium block">Starting from</span>
-                  <span class="text-2xl font-black text-amber-400 tracking-tight">₹18 Lakhs*</span>
+                <div class="absolute bottom-2.5 left-3 sm:bottom-3 sm:left-4">
+                  <span class="text-[10px] sm:text-xs text-slate-300 font-medium block">Starting from</span>
+                  <span class="text-lg sm:text-2xl font-black text-amber-400 tracking-tight">₹18 Lakhs*</span>
                 </div>
 
                 <!-- Live Switcher Thumbnails Bottom Right -->
-                <div class="absolute bottom-3 right-4 flex items-center gap-1.5 bg-black/50 p-1 rounded-xl backdrop-blur-md">
-                  <button onclick="switchHeroImage('images/post1_builder_floor_flats.jpg', 'Builder Floor, Uttam Nagar')" class="w-7 h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Builder Floor">
+                <div class="absolute bottom-2.5 right-3 sm:bottom-3 sm:right-4 flex items-center gap-1 sm:gap-1.5 bg-black/50 p-1 rounded-xl backdrop-blur-md">
+                  <button onclick="switchHeroImage('images/post1_builder_floor_flats.jpg', 'Builder Floor, Uttam Nagar')" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Builder Floor">
                     <img src="images/post1_builder_floor_flats.jpg" class="w-full h-full object-cover" alt="1">
                   </button>
-                  <button onclick="switchHeroImage('images/post2_residential_plots.jpg', 'Plots, Jeevan Park')" class="w-7 h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Plots">
+                  <button onclick="switchHeroImage('images/post2_residential_plots.jpg', 'Plots, Jeevan Park')" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Plots">
                     <img src="images/post2_residential_plots.jpg" class="w-full h-full object-cover" alt="2">
                   </button>
-                  <button onclick="switchHeroImage('images/post3_commercial_shops.jpg', 'Commercial, Janak Puri')" class="w-7 h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Commercial">
+                  <button onclick="switchHeroImage('images/post3_commercial_shops.jpg', 'Commercial, Janak Puri')" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Commercial">
                     <img src="images/post3_commercial_shops.jpg" class="w-full h-full object-cover" alt="3">
                   </button>
                 </div>
               </div>
 
               <!-- Card Content Details -->
-              <div class="p-4 sm:p-5 bg-slate-900 space-y-2.5">
-                <div class="flex items-center justify-between">
-                  <h3 id="heroVisualTitle" class="font-bold text-white text-base">Luxury 1/2/3 BHK Builder Floor</h3>
-                  <span class="text-xs text-emerald-400 font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-sm">verified</span> Verified
+              <div class="p-3.5 sm:p-5 bg-slate-900 space-y-2 sm:space-y-2.5">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 id="heroVisualTitle" class="font-bold text-white text-sm sm:text-base truncate">Luxury 1/2/3 BHK Builder Floor</h3>
+                  <span class="text-[11px] sm:text-xs text-emerald-400 font-semibold flex items-center gap-1 shrink-0">
+                    <span class="material-symbols-outlined text-xs sm:text-sm">verified</span> Verified
                   </span>
                 </div>
                 
-                <p class="text-xs text-slate-400 line-clamp-1">With Automatic Lift, Covered Stilt Car Parking & Modular Kitchen</p>
+                <p class="text-[11px] sm:text-xs text-slate-400 line-clamp-1">With Automatic Lift, Covered Stilt Car Parking &amp; Modular Kitchen</p>
 
                 <!-- Micro Amenities Row -->
-                <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[11px] text-slate-300">
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-blue-400">elevator</span> Lift</span>
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-blue-400">directions_car</span> Parking</span>
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-blue-400">account_balance</span> Loan 90%</span>
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-blue-400">train</span> 5 Min Metro</span>
+                <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[10px] sm:text-[11px] text-slate-300">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">elevator</span> Lift</span>
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">directions_car</span> Parking</span>
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">account_balance</span> Loan 90%</span>
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">train</span> 5 Min Metro</span>
                 </div>
               </div>
 
@@ -376,27 +402,27 @@
             <!-- ============================================ -->
 
             <!-- Floating Card 1: Google Reviews (Top Right) -->
-            <div class="absolute -top-4 -right-2 sm:-right-4 z-30 animate-float-slow bg-white text-slate-900 rounded-2xl p-3 shadow-m3-3 border border-slate-200/80 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 font-bold shrink-0">
-                <span class="material-symbols-outlined text-xl">star</span>
+            <div class="absolute -top-3 right-0 sm:-top-4 sm:-right-4 z-30 animate-float-slow bg-white text-slate-900 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-m3-3 border border-slate-200/80 flex items-center gap-2 sm:gap-3 max-w-[190px] sm:max-w-none">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 font-bold shrink-0">
+                <span class="material-symbols-outlined text-lg sm:text-xl">star</span>
               </div>
               <div class="text-left">
                 <div class="flex items-center gap-1">
-                  <span class="font-extrabold text-sm text-slate-900">4.9 / 5.0</span>
-                  <span class="text-amber-500 text-xs">★★★★★</span>
+                  <span class="font-extrabold text-xs sm:text-sm text-slate-900">4.9 / 5.0</span>
+                  <span class="text-amber-500 text-[10px] sm:text-xs">★★★★★</span>
                 </div>
-                <span class="text-[10px] text-slate-500 font-medium block">Google Maps Verified Rating</span>
+                <span class="text-[9px] sm:text-[10px] text-slate-500 font-medium block truncate">Google Maps Verified</span>
               </div>
             </div>
 
             <!-- Floating Card 2: Legal Registry Verified (Bottom Left) -->
-            <div class="absolute -bottom-4 -left-2 sm:-left-4 z-30 animate-float-medium bg-white text-slate-900 rounded-2xl p-3 shadow-m3-3 border border-slate-200/80 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold shrink-0">
-                <span class="material-symbols-outlined text-xl">verified_user</span>
+            <div class="absolute -bottom-3 left-0 sm:-bottom-4 sm:-left-4 z-30 animate-float-medium bg-white text-slate-900 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-m3-3 border border-slate-200/80 flex items-center gap-2 sm:gap-3 max-w-[190px] sm:max-w-none">
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold shrink-0">
+                <span class="material-symbols-outlined text-lg sm:text-xl">verified_user</span>
               </div>
               <div class="text-left">
-                <div class="font-extrabold text-xs text-slate-900">100% Freehold Title</div>
-                <span class="text-[10px] text-emerald-700 font-semibold block">Full Government Registry</span>
+                <div class="font-extrabold text-[11px] sm:text-xs text-slate-900 truncate">100% Freehold Title</div>
+                <span class="text-[9px] sm:text-[10px] text-emerald-700 font-semibold block truncate">Government Registry</span>
               </div>
             </div>
 
@@ -417,68 +443,68 @@
   <!-- ========================================================================= -->
   <!-- PROPERTY INVENTORY WITH MATERIAL DESIGN 3 FILTER CHIPS                   -->
   <!-- ========================================================================= -->
-  <section id="properties" class="py-20 bg-google-surface">
+  <section id="properties" class="py-12 sm:py-16 lg:py-20 bg-google-surface">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-google-blueLight text-google-blue tracking-wide uppercase">
           <span class="material-symbols-outlined text-sm">home_work</span>
           Verified Property Portfolio
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-google-textPrimary mt-3">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-google-textPrimary mt-3">
           Explore Tailored Properties Across West Delhi
         </h2>
-        <p class="text-google-textSecondary mt-3 text-base">
+        <p class="text-google-textSecondary mt-2 sm:mt-3 text-sm sm:text-base">
           From budget-friendly builder floors to prime freehold plots in Jeevan Park and high-street commercial shops in Janak Puri, discover verified listings with bank loan approvals.
         </p>
 
-        <!-- M3 Filter Chips -->
-        <div class="flex flex-wrap items-center justify-center gap-2 pt-6">
-          <button onclick="filterProperties('all')" class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-google-blue text-white shadow-sm transition">
+        <!-- M3 Filter Chips: Horizontal Swipeable on Mobile, Centered on Desktop -->
+        <div class="flex items-center gap-2 pt-6 overflow-x-auto no-scrollbar sm:flex-wrap sm:justify-center px-1 py-1 -mx-2 sm:mx-0">
+          <button onclick="filterProperties('all', this)" class="filter-btn active shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-google-blue text-white shadow-sm transition">
             All Listings
           </button>
-          <button onclick="filterProperties('floors')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
+          <button onclick="filterProperties('floors', this)" class="filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
             Builder Floors (1/2/3/4 BHK)
           </button>
-          <button onclick="filterProperties('plots')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
+          <button onclick="filterProperties('plots', this)" class="filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
             Freehold Plots
           </button>
-          <button onclick="filterProperties('commercial')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
-            Commercial & Offices
+          <button onclick="filterProperties('commercial', this)" class="filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
+            Commercial &amp; Offices
           </button>
-          <button onclick="filterProperties('rentals')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
+          <button onclick="filterProperties('rentals', this)" class="filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-google-textSecondary border border-google-outline hover:bg-google-blueLight hover:text-google-blue transition">
             Rental / Leasing
           </button>
         </div>
       </div>
 
       <!-- CARDS GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7" id="propertyCardsGrid">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7" id="propertyCardsGrid">
         
         <!-- CARD 1: BUILDER FLOORS -->
-        <div class="prop-card floors bg-white border border-google-outline/80 rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
-          <div class="h-48 overflow-hidden relative">
+        <div class="prop-card floors bg-white border border-google-outline/80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
+          <div class="h-44 sm:h-48 overflow-hidden relative">
             <img src="images/post1_builder_floor_flats.jpg" alt="Residential Builder Floors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <span class="absolute top-3 left-3 bg-google-blue text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
-              Lift & Car Parking
+              Lift &amp; Car Parking
             </span>
             <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-amber-400 text-xs font-black px-2.5 py-0.5 rounded-lg">
               ₹18 Lakhs+
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-1 text-[11px] font-bold text-google-blue mb-1 uppercase tracking-wider">
                 <span class="material-symbols-outlined text-[14px]">apartment</span> Ready to Move
               </div>
-              <h3 class="text-xl font-bold text-google-textPrimary mb-2">Residential Builder Floors</h3>
+              <h3 class="text-lg sm:text-xl font-bold text-google-textPrimary mb-2">Residential Builder Floors</h3>
               <p class="text-google-textSecondary text-xs leading-relaxed mb-4">
-                1 BHK, 2 BHK, 3 BHK & 4 BHK floors with automatic lifts, dedicated car parking, and modern modular kitchens.
+                1 BHK, 2 BHK, 3 BHK &amp; 4 BHK floors with automatic lifts, dedicated car parking, and modern modular kitchens.
               </p>
               <ul class="text-xs space-y-2 text-google-textSecondary border-t border-slate-100 pt-3 mb-6">
-                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-blue">pin_drop</span> Uttam Nagar East & West</li>
-                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-green">verified</span> Registry Verified & Loan Approved</li>
+                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-blue">pin_drop</span> Uttam Nagar East &amp; West</li>
+                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-green">verified</span> Registry Verified &amp; Loan Approved</li>
                 <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-amber-500">train</span> 5-7 min to Metro Stations</li>
               </ul>
             </div>
@@ -490,8 +516,8 @@
         </div>
 
         <!-- CARD 2: FREEHOLD PLOTS -->
-        <div class="prop-card plots bg-white border border-google-outline/80 rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
-          <div class="h-48 overflow-hidden relative">
+        <div class="prop-card plots bg-white border border-google-outline/80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
+          <div class="h-44 sm:h-48 overflow-hidden relative">
             <img src="images/post2_residential_plots.jpg" alt="Freehold Residential Plots" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <span class="absolute top-3 left-3 bg-amber-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
               Clear Title
@@ -500,18 +526,18 @@
               Demarcated
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-1 text-[11px] font-bold text-amber-700 mb-1 uppercase tracking-wider">
                 <span class="material-symbols-outlined text-[14px]">landscape</span> Land Investment
               </div>
-              <h3 class="text-xl font-bold text-google-textPrimary mb-2">Freehold Residential Plots</h3>
+              <h3 class="text-lg sm:text-xl font-bold text-google-textPrimary mb-2">Freehold Residential Plots</h3>
               <p class="text-google-textSecondary text-xs leading-relaxed mb-4">
                 Clear title residential land parcels in prime sectors of Jeevan Park and Uttam Nagar. Build your custom dream home.
               </p>
               <ul class="text-xs space-y-2 text-google-textSecondary border-t border-slate-100 pt-3 mb-6">
-                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-blue">pin_drop</span> Jeevan Park & Uttam Nagar</li>
-                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-green">verified</span> Clear Chain Title & Mutation</li>
+                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-blue">pin_drop</span> Jeevan Park &amp; Uttam Nagar</li>
+                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-green">verified</span> Clear Chain Title &amp; Mutation</li>
                 <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-amber-500">straighten</span> 40 Sq Yds to 200+ Sq Yds</li>
               </ul>
             </div>
@@ -523,8 +549,8 @@
         </div>
 
         <!-- CARD 3: COMMERCIAL SHOPS & OFFICES -->
-        <div class="prop-card commercial bg-white border border-google-outline/80 rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
-          <div class="h-48 overflow-hidden relative">
+        <div class="prop-card commercial bg-white border border-google-outline/80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
+          <div class="h-44 sm:h-48 overflow-hidden relative">
             <img src="images/post3_commercial_shops.jpg" alt="Commercial Shops & Offices" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
               High Footfall
@@ -533,18 +559,18 @@
               Prime Market
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-1 text-[11px] font-bold text-emerald-700 mb-1 uppercase tracking-wider">
                 <span class="material-symbols-outlined text-[14px]">storefront</span> High Returns
               </div>
-              <h3 class="text-xl font-bold text-google-textPrimary mb-2">Commercial Shops & Offices</h3>
+              <h3 class="text-lg sm:text-xl font-bold text-google-textPrimary mb-2">Commercial Shops &amp; Offices</h3>
               <p class="text-google-textSecondary text-xs leading-relaxed mb-4">
                 Retail shops and corporate office spaces for sale and lease near Janak Puri District Centre and main road commercial belts.
               </p>
               <ul class="text-xs space-y-2 text-google-textSecondary border-t border-slate-100 pt-3 mb-6">
-                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-blue">pin_drop</span> Janak Puri & Uttam Nagar Main Road</li>
-                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-green">verified</span> High Rental Yield & Appreciation</li>
+                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-blue">pin_drop</span> Janak Puri &amp; Uttam Nagar Main Road</li>
+                <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-google-green">verified</span> High Rental Yield &amp; Appreciation</li>
                 <li class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-amber-500">domain</span> Retail Showrooms, Clinics, Offices</li>
               </ul>
             </div>
@@ -556,8 +582,8 @@
         </div>
 
         <!-- CARD 4: RENTALS & LEASING -->
-        <div class="prop-card rentals bg-white border border-google-outline/80 rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
-          <div class="h-48 overflow-hidden relative">
+        <div class="prop-card rentals bg-white border border-google-outline/80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-m3-1 hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col group">
+          <div class="h-44 sm:h-48 overflow-hidden relative">
             <img src="images/post5_rental_properties.jpg" alt="Rental & Tenant Placement" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <span class="absolute top-3 left-3 bg-purple-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
               Verified Tenants
@@ -566,12 +592,12 @@
               Furnished/Semi
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-1 text-[11px] font-bold text-purple-700 mb-1 uppercase tracking-wider">
                 <span class="material-symbols-outlined text-[14px]">key</span> Easy Move-In
               </div>
-              <h3 class="text-xl font-bold text-google-textPrimary mb-2">Rental & Tenant Placement</h3>
+              <h3 class="text-lg sm:text-xl font-bold text-google-textPrimary mb-2">Rental &amp; Tenant Placement</h3>
               <p class="text-google-textSecondary text-xs leading-relaxed mb-4">
                 Verified rental flats for families and professionals. Complete lease agreements and police verification support.
               </p>
@@ -596,30 +622,30 @@
   <!-- ========================================================================= -->
   <!-- WHY CHOOSE US (MATERIAL DESIGN 3 TONAL CONTAINER CARDS)                   -->
   <!-- ========================================================================= -->
-  <section id="why-us" class="py-20 bg-white border-y border-google-outline/40">
+  <section id="why-us" class="py-12 sm:py-16 lg:py-20 bg-white border-y border-google-outline/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
         
-        <div class="lg:col-span-6 space-y-6">
+        <div class="lg:col-span-6 space-y-4 sm:space-y-6">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 uppercase tracking-wide">
             <span class="material-symbols-outlined text-sm">shield</span>
             Trusted West Delhi Advisory
           </span>
 
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-google-textPrimary leading-tight">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-google-textPrimary leading-tight">
             Transparent, Dispute-Free Real Estate Dealings in West Delhi
           </h2>
 
-          <p class="text-google-textSecondary text-base leading-relaxed">
+          <p class="text-google-textSecondary text-sm sm:text-base leading-relaxed">
             Buying or selling property in Delhi shouldn't feel stressful. At Pathak Real Estate, we eliminate the uncertainty with rigorous paperwork, honest market valuations, and end-to-end guidance from your initial site visit all the way to the Sub-Registrar's registry office.
           </p>
 
-          <div class="space-y-3.5">
+          <div class="space-y-3 sm:space-y-3.5">
             
-            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-xl">fact_check</span>
+            <div class="flex items-start gap-3 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-lg sm:text-xl">fact_check</span>
               </div>
               <div>
                 <h4 class="font-bold text-google-textPrimary text-sm sm:text-base">Rigorous 30-Year Chain of Title Verification</h4>
@@ -627,9 +653,9 @@
               </div>
             </div>
 
-            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
-              <div class="w-10 h-10 rounded-xl bg-blue-100 text-google-blue flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-xl">account_balance</span>
+            <div class="flex items-start gap-3 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-google-blue flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-lg sm:text-xl">account_balance</span>
               </div>
               <div>
                 <h4 class="font-bold text-google-textPrimary text-sm sm:text-base">Seamless Bank Home Loan Processing (Up to 90%)</h4>
@@ -637,19 +663,19 @@
               </div>
             </div>
 
-            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
-              <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-xl">handshake</span>
+            <div class="flex items-start gap-3 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-lg sm:text-xl">handshake</span>
               </div>
               <div>
-                <h4 class="font-bold text-google-textPrimary text-sm sm:text-base">Zero Hidden Charges & 100% Upfront Transparency</h4>
+                <h4 class="font-bold text-google-textPrimary text-sm sm:text-base">Zero Hidden Charges &amp; 100% Upfront Transparency</h4>
                 <p class="text-xs text-google-textSecondary mt-0.5">Full clarity on government registry stamp duty, municipal fees, and brokerage costs.</p>
               </div>
             </div>
 
-            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
-              <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-xl">map</span>
+            <div class="flex items-start gap-3 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-google-surface border border-google-outline/60 shadow-xs">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-lg sm:text-xl">map</span>
               </div>
               <div>
                 <h4 class="font-bold text-google-textPrimary text-sm sm:text-base">Deep Hyper-Local West Delhi Micro-Market Knowledge</h4>
@@ -662,16 +688,16 @@
 
         <!-- STATS & BUILDING SHOWCASE -->
         <div class="lg:col-span-6 relative">
-          <div class="rounded-3xl overflow-hidden shadow-m3-3 border border-google-outline/80 bg-slate-900 group">
-            <img src="images/post7_weekend_site_visits.jpg" alt="Pathak Real Estate West Delhi Properties" class="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-m3-3 border border-google-outline/80 bg-slate-900 group">
+            <img src="images/post7_weekend_site_visits.jpg" alt="Pathak Real Estate West Delhi Properties" class="w-full h-[320px] sm:h-[460px] object-cover group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
             
-            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-between">
-              <div>
-                <div class="text-xs text-amber-400 font-semibold uppercase tracking-wider">West Delhi Quality Standard</div>
-                <div class="text-base font-bold">New Builder Floor Constructions</div>
+            <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <div class="text-[11px] sm:text-xs text-amber-400 font-semibold uppercase tracking-wider truncate">West Delhi Quality Standard</div>
+                <div class="text-sm sm:text-base font-bold truncate">New Builder Floor Constructions</div>
               </div>
-              <a href="tel:+919352222820" class="inline-flex items-center gap-1.5 bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-full hover:bg-blue-500 transition">
+              <a href="tel:+919352222820" class="inline-flex items-center gap-1 sm:gap-1.5 bg-blue-600 text-white text-xs font-bold px-3 py-2 sm:px-3.5 sm:py-2 rounded-full hover:bg-blue-500 transition shrink-0">
                 <span>Site Visit</span>
                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
               </a>
@@ -687,17 +713,17 @@
   <!-- ========================================================================= -->
   <!-- GOOGLE MAPS VERIFIED REVIEWS SHOWCASE                                     -->
   <!-- ========================================================================= -->
-  <section id="reviews" class="py-20 bg-google-surface">
+  <section id="reviews" class="py-12 sm:py-16 lg:py-20 bg-google-surface">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12">
         <div>
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 uppercase tracking-wide">
             <span class="material-symbols-outlined text-sm text-amber-600">rate_review</span>
             Google Maps Verified Reviews
           </span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-google-textPrimary mt-3">What Our Clients Say on Google</h2>
-          <p class="text-google-textSecondary text-sm mt-1">Real feedback from homebuyers and commercial investors across West Delhi.</p>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-google-textPrimary mt-3">What Our Clients Say on Google</h2>
+          <p class="text-google-textSecondary text-xs sm:text-sm mt-1">Real feedback from homebuyers and commercial investors across West Delhi.</p>
         </div>
         <div class="mt-4 md:mt-0 flex items-center gap-3">
           <a href="https://share.google/Zm8GaUdHTM4IsPYNA" target="_blank" class="inline-flex items-center gap-2 bg-google-blue hover:bg-blue-600 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-sm transition">
@@ -710,7 +736,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- REVIEW 1 -->
-        <div class="bg-white border border-google-outline/80 p-6 rounded-3xl shadow-m3-1 flex flex-col justify-between">
+        <div class="bg-white border border-google-outline/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-m3-1 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
@@ -729,7 +755,7 @@
               ★★★★★
             </div>
 
-            <p class="text-google-textPrimary text-sm leading-relaxed">
+            <p class="text-google-textPrimary text-xs sm:text-sm leading-relaxed">
               "I was searching for a 2BHK flat in Uttam Nagar near the metro with car parking. Pathak Real Estate showed us verified options within our budget and managed the entire registry process smoothly. Highly recommended!"
             </p>
           </div>
@@ -740,7 +766,7 @@
         </div>
 
         <!-- REVIEW 2 -->
-        <div class="bg-white border border-google-outline/80 p-6 rounded-3xl shadow-m3-1 flex flex-col justify-between">
+        <div class="bg-white border border-google-outline/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-m3-1 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
@@ -759,7 +785,7 @@
               ★★★★★
             </div>
 
-            <p class="text-google-textPrimary text-sm leading-relaxed">
+            <p class="text-google-textPrimary text-xs sm:text-sm leading-relaxed">
               "Best property consultant in Jeevan Park. Purchased a freehold residential plot through them. All documents and chain of titles were verified without any hassle. Very honest and polite behavior."
             </p>
           </div>
@@ -770,7 +796,7 @@
         </div>
 
         <!-- REVIEW 3 -->
-        <div class="bg-white border border-google-outline/80 p-6 rounded-3xl shadow-m3-1 flex flex-col justify-between">
+        <div class="bg-white border border-google-outline/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-m3-1 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
@@ -789,7 +815,7 @@
               ★★★★★
             </div>
 
-            <p class="text-google-textPrimary text-sm leading-relaxed">
+            <p class="text-google-textPrimary text-xs sm:text-sm leading-relaxed">
               "Found a wonderful commercial shop for rent in Janak Puri through Pathak Real Estate. The lease terms and agreement were handled professionally. Great support throughout."
             </p>
           </div>
@@ -807,37 +833,37 @@
   <!-- ========================================================================= -->
   <!-- LEAD CONSULTATION FORM (MATERIAL DESIGN 3 TEXT FIELDS)                    -->
   <!-- ========================================================================= -->
-  <section class="py-20 bg-white border-t border-google-outline/40" id="inquiry-form-section">
+  <section class="py-12 sm:py-16 lg:py-20 bg-white border-t border-google-outline/40" id="inquiry-form-section">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="bg-google-surface border border-google-outline/80 rounded-3xl p-8 sm:p-12 shadow-m3-2 relative overflow-hidden">
+      <div class="bg-google-surface border border-google-outline/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 shadow-m3-2 relative overflow-hidden">
         <div class="absolute -top-12 -right-12 w-48 h-48 bg-blue-100 rounded-full blur-2xl pointer-events-none"></div>
 
-        <div class="text-center max-w-2xl mx-auto mb-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-6 sm:mb-8 relative z-10">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-google-blue uppercase tracking-wide">
             <span class="material-symbols-outlined text-sm">send</span> Direct Inquiry
           </span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-google-textPrimary mt-2">Book a Complimentary Property Tour</h2>
+          <h2 class="text-xl sm:text-3xl font-extrabold text-google-textPrimary mt-2">Book a Complimentary Property Tour</h2>
           <p class="text-google-textSecondary text-xs sm:text-sm mt-1">Submit your requirement and get curated property details sent directly to your WhatsApp in 30 minutes.</p>
         </div>
 
-        <form id="mainConsultationForm" class="space-y-5 relative z-10">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <form id="mainConsultationForm" class="space-y-4 sm:space-y-5 relative z-10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             <div>
               <label class="block text-xs font-bold text-google-textSecondary uppercase tracking-wider mb-1.5">Full Name</label>
-              <input type="text" id="consultName" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-2xl border border-google-outline bg-white text-sm focus:outline-none focus:ring-2 focus:ring-google-blue focus:border-google-blue transition">
+              <input type="text" id="consultName" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl border border-google-outline bg-white text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-google-blue focus:border-google-blue transition">
             </div>
 
             <div>
               <label class="block text-xs font-bold text-google-textSecondary uppercase tracking-wider mb-1.5">Phone (WhatsApp)</label>
-              <input type="tel" id="consultPhone" required placeholder="e.g. 9876543210" class="w-full px-4 py-3 rounded-2xl border border-google-outline bg-white text-sm focus:outline-none focus:ring-2 focus:ring-google-blue focus:border-google-blue transition">
+              <input type="tel" id="consultPhone" required placeholder="e.g. 9876543210" class="w-full px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl border border-google-outline bg-white text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-google-blue focus:border-google-blue transition">
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
             <div>
               <label class="block text-xs font-bold text-google-textSecondary uppercase tracking-wider mb-1.5">Requirement</label>
-              <select id="consultIntent" class="w-full px-3.5 py-3 rounded-2xl border border-google-outline bg-white text-sm focus:outline-none focus:ring-2 focus:ring-google-blue">
+              <select id="consultIntent" class="w-full px-3.5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl border border-google-outline bg-white text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-google-blue">
                 <option value="Buy">Buy Property</option>
                 <option value="Rent">Rent Property</option>
                 <option value="Sell">Sell / List Property</option>
@@ -846,7 +872,7 @@
 
             <div>
               <label class="block text-xs font-bold text-google-textSecondary uppercase tracking-wider mb-1.5">Property Type</label>
-              <select id="consultType" class="w-full px-3.5 py-3 rounded-2xl border border-google-outline bg-white text-sm focus:outline-none focus:ring-2 focus:ring-google-blue">
+              <select id="consultType" class="w-full px-3.5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl border border-google-outline bg-white text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-google-blue">
                 <option value="Builder Floor Flat">Builder Floor Flat</option>
                 <option value="Freehold Plot">Residential Plot</option>
                 <option value="Commercial Shop">Commercial Shop</option>
@@ -856,7 +882,7 @@
 
             <div>
               <label class="block text-xs font-bold text-google-textSecondary uppercase tracking-wider mb-1.5">Preferred Locality</label>
-              <select id="consultLocality" class="w-full px-3.5 py-3 rounded-2xl border border-google-outline bg-white text-sm focus:outline-none focus:ring-2 focus:ring-google-blue">
+              <select id="consultLocality" class="w-full px-3.5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl border border-google-outline bg-white text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-google-blue">
                 <option value="Jeevan Park, Uttam Nagar">Jeevan Park, Uttam Nagar</option>
                 <option value="Janak Puri (Near Metro)">Janak Puri (Near Metro)</option>
                 <option value="Uttam Nagar East / West">Uttam Nagar East / West</option>
@@ -865,9 +891,9 @@
             </div>
           </div>
 
-          <button type="submit" class="w-full bg-google-green hover:bg-emerald-700 text-white font-extrabold py-4 rounded-full shadow-lg shadow-emerald-600/25 active:scale-98 transition flex items-center justify-center gap-2.5 text-sm">
-            <span class="material-symbols-outlined text-lg">send</span>
-            <span>Submit & Connect on WhatsApp</span>
+          <button type="submit" class="w-full bg-google-green hover:bg-emerald-700 text-white font-extrabold py-3.5 sm:py-4 rounded-full shadow-lg shadow-emerald-600/25 active:scale-98 transition flex items-center justify-center gap-2.5 text-sm sm:text-base">
+            <span class="material-symbols-outlined text-lg sm:text-xl">send</span>
+            <span>Submit &amp; Connect on WhatsApp</span>
           </button>
         </form>
 
@@ -879,55 +905,55 @@
   <!-- ========================================================================= -->
   <!-- FAQS (MATERIAL ACCORDION)                                                 -->
   <!-- ========================================================================= -->
-  <section id="faq" class="py-20 bg-google-surface border-t border-google-outline/40">
+  <section id="faq" class="py-12 sm:py-16 lg:py-20 bg-google-surface border-t border-google-outline/40">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center mb-12">
+      <div class="text-center mb-8 sm:mb-12">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-google-blue uppercase tracking-wide">
-          <span class="material-symbols-outlined text-sm">help</span> Questions & Answers
+          <span class="material-symbols-outlined text-sm">help</span> Questions &amp; Answers
         </span>
-        <h2 class="text-3xl font-extrabold text-google-textPrimary mt-3">Frequently Asked Questions</h2>
-        <p class="text-google-textSecondary text-sm mt-1">Key information for property buyers and sellers in West Delhi.</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-google-textPrimary mt-3">Frequently Asked Questions</h2>
+        <p class="text-google-textSecondary text-xs sm:text-sm mt-1">Key information for property buyers and sellers in West Delhi.</p>
       </div>
 
-      <div class="space-y-3.5">
+      <div class="space-y-3 sm:space-y-3.5">
         
-        <details class="group bg-white p-6 rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
-          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-base">
+        <details class="group bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
+          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-sm sm:text-base gap-2">
             <span>What areas do you primarily cover in West Delhi?</span>
-            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform">expand_more</span>
+            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform shrink-0">expand_more</span>
           </summary>
-          <p class="mt-3.5 text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
-            Our primary office is located in Jeevan Park, Uttam Nagar (110059). We cover Jeevan Park, Uttam Nagar East & West, Janak Puri (all residential blocks and District Centre), Milap Nagar, Mohan Garden, Vikaspuri, and surrounding West Delhi localities.
+          <p class="mt-3 text-xs sm:text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
+            Our primary office is located in Jeevan Park, Uttam Nagar (110059). We cover Jeevan Park, Uttam Nagar East &amp; West, Janak Puri (all residential blocks and District Centre), Milap Nagar, Mohan Garden, Vikaspuri, and surrounding West Delhi localities.
           </p>
         </details>
 
-        <details class="group bg-white p-6 rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
-          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-base">
+        <details class="group bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
+          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-sm sm:text-base gap-2">
             <span>Are home loans available on your builder floor flats?</span>
-            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform">expand_more</span>
+            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform shrink-0">expand_more</span>
           </summary>
-          <p class="mt-3.5 text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
+          <p class="mt-3 text-xs sm:text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
             Yes, our builder floors possess 100% verified registry titles eligible for up to 80-90% home loan financing through nationalized and private banks (including SBI, HDFC, ICICI, PNB) with minimal documentation.
           </p>
         </details>
 
-        <details class="group bg-white p-6 rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
-          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-base">
+        <details class="group bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
+          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-sm sm:text-base gap-2">
             <span>Do you deal in freehold plots in Jeevan Park?</span>
-            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform">expand_more</span>
+            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform shrink-0">expand_more</span>
           </summary>
-          <p class="mt-3.5 text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
+          <p class="mt-3 text-xs sm:text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
             Yes, we offer verified freehold residential plots in Jeevan Park and Uttam Nagar with complete chain of documents, clear mutation, and government sub-registrar registry support.
           </p>
         </details>
 
-        <details class="group bg-white p-6 rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
-          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-base">
+        <details class="group bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-google-outline/70 shadow-xs [&_summary::-webkit-details-marker]:hidden cursor-pointer transition">
+          <summary class="flex items-center justify-between font-bold text-google-textPrimary text-sm sm:text-base gap-2">
             <span>How can I schedule a property site visit?</span>
-            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform">expand_more</span>
+            <span class="material-symbols-outlined text-google-textSecondary group-open:rotate-180 transition-transform shrink-0">expand_more</span>
           </summary>
-          <p class="mt-3.5 text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
+          <p class="mt-3 text-xs sm:text-sm text-google-textSecondary leading-relaxed border-t border-slate-100 pt-3">
             You can call or WhatsApp our consultation desk directly at <a href="tel:+919352222820" class="text-google-blue font-bold">+91 9352222820</a>. Property tours and consultations are completely complimentary and arranged 7 days a week.
           </p>
         </details>
@@ -940,19 +966,19 @@
   <!-- ========================================================================= -->
   <!-- MAP & LOCAL NAP FOOTER (MATERIAL DESIGN 3 DARK SURFACE)                   -->
   <!-- ========================================================================= -->
-  <footer class="bg-slate-950 text-slate-300 pt-16 pb-24 md:pb-12 border-t border-slate-800">
+  <footer class="bg-slate-950 text-slate-300 pt-12 sm:pt-16 pb-28 md:pb-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-slate-800">
         
         <!-- COL 1: ABOUT -->
-        <div class="space-y-4">
+        <div class="space-y-3 sm:space-y-4">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">P</div>
             <span class="text-xl font-extrabold text-white">Pathak Real Estate</span>
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">
-            Trusted real estate consultant in Jeevan Park, Uttam Nagar, and Janak Puri. Transparent builder floors, freehold plots, commercial shops & leasing in West Delhi.
+            Trusted real estate consultant in Jeevan Park, Uttam Nagar, and Janak Puri. Transparent builder floors, freehold plots, commercial shops &amp; leasing in West Delhi.
           </p>
           <div class="flex items-center gap-1.5 text-xs text-amber-400 font-semibold">
             <span class="material-symbols-outlined text-sm">star</span>
@@ -962,20 +988,20 @@
 
         <!-- COL 2: LOCAL SERVICE AREAS -->
         <div>
-          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Service Areas</h4>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3 sm:mb-4">Service Areas</h4>
           <ul class="space-y-2 text-xs text-slate-400">
             <li>📍 Jeevan Park (Headquarters)</li>
-            <li>📍 Uttam Nagar East & West</li>
-            <li>📍 Janak Puri & District Centre</li>
-            <li>📍 Milap Nagar & Mohan Garden</li>
-            <li>📍 Vikaspuri & West Delhi</li>
+            <li>📍 Uttam Nagar East &amp; West</li>
+            <li>📍 Janak Puri &amp; District Centre</li>
+            <li>📍 Milap Nagar &amp; Mohan Garden</li>
+            <li>📍 Vikaspuri &amp; West Delhi</li>
           </ul>
         </div>
 
-        <!-- COL 4: NAP CONTACT -->
+        <!-- COL 3: NAP CONTACT -->
         <div>
-          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Contact & Location</h4>
-          <div class="space-y-3 text-xs text-slate-400">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3 sm:mb-4">Contact &amp; Location</h4>
+          <div class="space-y-2.5 sm:space-y-3 text-xs text-slate-400">
             <p class="leading-relaxed">
               🏢 <strong>Pathak Real Estate</strong><br>
               Jeevan Park, Uttam Nagar,<br>
@@ -996,21 +1022,21 @@
 
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <p>© 2026 Pathak Real Estate. All rights reserved. Locally serving Jeevan Park, Uttam Nagar & Janak Puri.</p>
+      <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3 sm:gap-4 text-center sm:text-left">
+        <p>© 2026 Pathak Real Estate. All rights reserved. Locally serving Jeevan Park, Uttam Nagar &amp; Janak Puri.</p>
         <p>Built with Google Material Design 3 guidelines.</p>
       </div>
 
     </div>
   </footer>
 
-  <!-- MOBILE STICKY BOTTOM BAR -->
-  <div class="md:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 z-50 p-3 shadow-lg flex items-center gap-3">
-    <a href="tel:+919352222820" class="flex-1 bg-google-blue hover:bg-blue-600 text-white font-bold py-3 rounded-full text-center text-sm flex items-center justify-center gap-2 shadow">
+  <!-- MOBILE STICKY BOTTOM BAR (WITH SAFE AREA INSETS) -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-50 p-2.5 sm:p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-2xl flex items-center gap-2.5">
+    <a href="tel:+919352222820" class="flex-1 bg-google-blue hover:bg-blue-600 text-white font-bold py-3 rounded-full text-center text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow active:scale-95 transition">
       <span class="material-symbols-outlined text-base">call</span>
       <span>Call Now</span>
     </a>
-    <a href="https://wa.me/919352222820?text=Hi%20Pathak%20Real%20Estate,%20I%20am%20interested%20in%20properties%20in%20Jeevan%20Park/Uttam%20Nagar." target="_blank" class="flex-1 bg-google-green hover:bg-emerald-700 text-white font-bold py-3 rounded-full text-center text-sm flex items-center justify-center gap-2 shadow">
+    <a href="https://wa.me/919352222820?text=Hi%20Pathak%20Real%20Estate,%20I%20am%20interested%20in%20properties%20in%20Jeevan%20Park/Uttam%20Nagar." target="_blank" class="flex-1 bg-google-green hover:bg-emerald-700 text-white font-bold py-3 rounded-full text-center text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow active:scale-95 transition">
       <span class="material-symbols-outlined text-base">chat</span>
       <span>WhatsApp</span>
     </a>
@@ -1032,7 +1058,7 @@
     }
 
     // 2. Material Filter Chips
-    function filterProperties(category) {
+    function filterProperties(category, btnElement) {
       const cards = document.querySelectorAll('.prop-card');
       const buttons = document.querySelectorAll('.filter-btn');
 
@@ -1041,8 +1067,12 @@
         btn.classList.remove('bg-google-blue', 'text-white', 'shadow-sm');
         btn.classList.add('bg-white', 'text-google-textSecondary', 'border', 'border-google-outline');
       });
-      event.target.classList.remove('bg-white', 'text-google-textSecondary', 'border', 'border-google-outline');
-      event.target.classList.add('bg-google-blue', 'text-white', 'shadow-sm');
+      
+      const target = btnElement || (window.event && window.event.target ? window.event.target.closest('.filter-btn') : null);
+      if (target) {
+        target.classList.remove('bg-white', 'text-google-textSecondary', 'border', 'border-google-outline');
+        target.classList.add('bg-google-blue', 'text-white', 'shadow-sm');
+      }
 
       // Filter cards
       cards.forEach(card => {
