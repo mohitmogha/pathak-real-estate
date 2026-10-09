@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pathak Real Estate — Property Consultant in Jeevan Park, Uttam Nagar &amp; Janak Puri</title>
@@ -381,6 +388,10 @@
   </style>
 </head>
 <body class="font-sans antialiased text-google-textPrimary bg-google-surface flex flex-col min-h-screen selection:bg-google-blueLight selection:text-google-blue overflow-x-hidden pb-16 md:pb-0">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- GOOGLE M3 TOP APP BAR & ANNOUNCEMENT -->
   <div class="bg-slate-900 text-slate-200 text-xs py-2 px-3 sm:px-4 border-b border-slate-800">
@@ -1525,7 +1536,7 @@
       });
     }
 
-    // 3. Form Submission -> WhatsApp Forwarding
+    // 3. Form Submission -> GTM Event & WhatsApp Forwarding
     document.getElementById('mainConsultationForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('consultName').value.trim();
@@ -1534,10 +1545,36 @@
       const type = document.getElementById('consultType').value;
       const locality = document.getElementById('consultLocality').value;
 
+      // Push custom conversion event to Google Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'generate_lead',
+        lead_requirement: intent,
+        lead_property_type: type,
+        lead_locality: locality
+      });
+
       const message = `Hello Pathak Real Estate,\nMy name is ${name}.\nPhone: ${phone}\nRequirement: ${intent}\nProperty Type: ${type}\nPreferred Locality: ${locality}\nPlease contact me with available options.`;
       
       const whatsappUrl = `https://wa.me/919352222820?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
+    });
+
+    // 4. GTM Event Listeners for Phone Call & WhatsApp Conversion Tracking
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a');
+      if (!link) return;
+      window.dataLayer = window.dataLayer || [];
+      if (link.href && link.href.startsWith('tel:')) {
+        window.dataLayer.push({
+          event: 'contact_call',
+          phone_number: link.href.replace('tel:', '')
+        });
+      } else if (link.href && link.href.includes('wa.me')) {
+        window.dataLayer.push({
+          event: 'contact_whatsapp'
+        });
+      }
     });
   </script>
 
