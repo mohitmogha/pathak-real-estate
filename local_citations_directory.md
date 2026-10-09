@@ -22,7 +22,7 @@ Local Citations (mentions of your business Name, Address, and Phone Number on ex
 | **Primary Category** | Real Estate Agency / Property Dealer / Real Estate Consultant |
 | **Target Areas** | Jeevan Park, Uttam Nagar, Janak Puri, West Delhi |
 | **Opening Hours** | Monday to Sunday: 09:30 AM – 08:30 PM |
-| **Website** | `[Your Landing Page URL]` |
+| **Website** | `https://mohitmogha.github.io/pathak-real-estate/` |
 
 ---
 
