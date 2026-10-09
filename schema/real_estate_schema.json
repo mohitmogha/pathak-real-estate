@@ -1,16 +1,18 @@
 {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
-  "@id": "https://pathakrealestate.local/#realestateagent",
+  "@id": "https://mohitmogha.github.io/pathak-real-estate/#business",
   "name": "Pathak Real Estate",
   "alternateName": "Pathak Real Estate Consultant",
-  "description": "Premier real estate agency and property consultancy in Jeevan Park, Uttam Nagar, serving Janak Puri and West Delhi. Specializing in residential plots, builder floor apartments, commercial shops, office spaces, and rental leasing.",
-  "url": "https://pathakrealestate.local/",
+  "description": "Premier real estate agency and property consultancy in Jeevan Park, Uttam Nagar, serving Janak Puri and West Delhi. Specializing in residential builder floors (1/2/3/4 BHK), freehold plots, commercial shops, and rental leasing.",
+  "url": "https://mohitmogha.github.io/pathak-real-estate/",
   "telephone": "+919352222820",
   "priceRange": "₹₹ - ₹₹₹",
   "currenciesAccepted": "INR",
   "paymentAccepted": "Cash, Cheque, Bank Transfer, Demand Draft",
-  "image": "https://pathakrealestate.local/images/office-exterior.jpg",
+  "image": "https://mohitmogha.github.io/pathak-real-estate/images/post1_builder_floor_flats.jpg",
+  "logo": "https://mohitmogha.github.io/pathak-real-estate/images/post1_builder_floor_flats.jpg",
+  "hasMap": "https://share.google/Zm8GaUdHTM4IsPYNA",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Jeevan Park, Uttam Nagar",
@@ -24,6 +26,13 @@
     "latitude": 28.6219,
     "longitude": 77.0674
   },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
   "areaServed": [
     {
       "@type": "AdministrativeArea",
@@ -36,6 +45,14 @@
     {
       "@type": "AdministrativeArea",
       "name": "Janak Puri"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Mohan Garden"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Milap Nagar"
     },
     {
       "@type": "AdministrativeArea",

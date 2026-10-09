@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mohitmogha.github.io/pathak-real-estate/sitemap.xml
