@@ -323,53 +323,64 @@
         <!-- ============================================================== -->
         <!-- RIGHT PART: CREATIVE MOTION GRAPHICS & INTERACTIVE VISUALIZER -->
         <!-- ============================================================== -->
-        <div class="lg:col-span-6 relative flex items-center justify-center w-full px-1 xs:px-2 sm:px-0">
+        <div class="lg:col-span-6 relative flex flex-col items-center justify-center w-full px-1 xs:px-2 sm:px-0">
           
-          <!-- Outer Motion Graphics Container -->
-          <div class="relative w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[440px] lg:max-w-[480px] flex items-center justify-center py-5 sm:py-8">
+          <!-- Outer Motion Graphics & Visualizer Container -->
+          <div class="relative w-full max-w-[420px] lg:max-w-[460px] flex flex-col items-center justify-center py-2 sm:py-4">
             
-            <!-- Radar Sonar Wave (Google Maps Locator Effect) -->
-            <div class="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-blue-500/30 animate-radar-wave pointer-events-none"></div>
-            <div class="absolute w-60 h-60 sm:w-80 sm:h-80 rounded-full border border-sky-400/20 animate-radar-wave pointer-events-none" style="animation-delay: 1s;"></div>
-            <div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full border border-indigo-400/15 animate-radar-wave pointer-events-none" style="animation-delay: 2s;"></div>
+            <!-- Radar Sonar Wave (Google Maps Locator Effect in Background) -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-0">
+              <div class="w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-blue-500/25 animate-radar-wave"></div>
+              <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full border border-sky-400/20 animate-radar-wave" style="animation-delay: 1.2s;"></div>
+              <div class="w-80 h-80 sm:w-[440px] sm:h-[440px] rounded-full border border-dashed border-white/10 animate-spin-slow"></div>
+            </div>
 
-            <!-- Rotating Compass Ring with Google Tech Aesthetic -->
-            <div class="absolute inset-2 sm:inset-4 rounded-full border border-dashed border-white/15 animate-spin-slow pointer-events-none"></div>
+            <!-- Top Live Status Header Pill Strip -->
+            <div class="w-full flex items-center justify-between gap-2 mb-3 z-10 px-1">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/90 border border-white/15 backdrop-blur-md text-[11px] font-semibold text-slate-200 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Consultant Online Now</span>
+              </div>
+              <div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md text-[10px] sm:text-[11px] font-medium text-slate-300">
+                <span class="material-symbols-outlined text-[13px] text-blue-400">touch_app</span>
+                <span>Tap to Switch Listing</span>
+              </div>
+            </div>
 
-            <!-- CENTRAL SHOWCASE CARD (Primary Hero Visualizer) -->
-            <div class="relative z-20 w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 sm:border-2 bg-slate-900/90 backdrop-blur-xl group hover:scale-[1.01] sm:hover:scale-[1.02] transition-transform duration-500">
+            <!-- CENTRAL SHOWCASE CARD (Primary Hero Visualizer — 100% UNOBSTRUCTED IMAGE) -->
+            <div class="relative z-10 w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 sm:border-2 bg-slate-900/95 backdrop-blur-xl group transition-all duration-300 hover:border-blue-500/40">
               
               <!-- Property Image with Gradient Overlay -->
-              <div class="h-44 xs:h-52 sm:h-64 relative overflow-hidden">
+              <div class="h-48 xs:h-56 sm:h-64 relative overflow-hidden bg-slate-950">
                 <img id="heroVisualImage" src="images/post1_builder_floor_flats.jpg" alt="Pathak Real Estate Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-black/25 pointer-events-none"></div>
                 
                 <!-- Top Status Chips -->
-                <div class="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 flex items-center gap-1.5 sm:gap-2">
+                <div class="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 flex items-center gap-1.5 sm:gap-2 z-10">
                   <span class="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-600 text-white shadow-md">
                     <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white animate-ping"></span>
                     FEATURED LISTING
                   </span>
-                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-semibold bg-black/60 text-white backdrop-blur-md">
+                  <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-semibold bg-black/70 text-white backdrop-blur-md border border-white/10">
                     📍 Jeevan Park
                   </span>
                 </div>
 
                 <!-- Price Tag Bottom Left -->
-                <div class="absolute bottom-2.5 left-3 sm:bottom-3 sm:left-4">
+                <div class="absolute bottom-2.5 left-3 sm:bottom-3 sm:left-4 z-10">
                   <span class="text-[10px] sm:text-xs text-slate-300 font-medium block">Starting from</span>
-                  <span class="text-lg sm:text-2xl font-black text-amber-400 tracking-tight">₹18 Lakhs*</span>
+                  <span class="text-xl sm:text-2xl font-black text-amber-400 tracking-tight drop-shadow">₹18 Lakhs*</span>
                 </div>
 
                 <!-- Live Switcher Thumbnails Bottom Right -->
-                <div class="absolute bottom-2.5 right-3 sm:bottom-3 sm:right-4 flex items-center gap-1 sm:gap-1.5 bg-black/50 p-1 rounded-xl backdrop-blur-md">
-                  <button onclick="switchHeroImage('images/post1_builder_floor_flats.jpg', 'Builder Floor, Uttam Nagar')" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Builder Floor">
+                <div class="absolute bottom-2.5 right-3 sm:bottom-3 sm:right-4 z-10 flex items-center gap-1 sm:gap-1.5 bg-black/60 p-1 rounded-xl backdrop-blur-md border border-white/15">
+                  <button onclick="switchHeroImage('images/post1_builder_floor_flats.jpg', 'Builder Floor, Uttam Nagar')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400 transition" title="Builder Floor">
                     <img src="images/post1_builder_floor_flats.jpg" class="w-full h-full object-cover" alt="1">
                   </button>
-                  <button onclick="switchHeroImage('images/post2_residential_plots.jpg', 'Plots, Jeevan Park')" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Plots">
+                  <button onclick="switchHeroImage('images/post2_residential_plots.jpg', 'Plots, Jeevan Park')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400 transition" title="Plots">
                     <img src="images/post2_residential_plots.jpg" class="w-full h-full object-cover" alt="2">
                   </button>
-                  <button onclick="switchHeroImage('images/post3_commercial_shops.jpg', 'Commercial, Janak Puri')" class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400" title="Commercial">
+                  <button onclick="switchHeroImage('images/post3_commercial_shops.jpg', 'Commercial, Janak Puri')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden border border-white/40 hover:border-white focus:ring-2 focus:ring-blue-400 transition" title="Commercial">
                     <img src="images/post3_commercial_shops.jpg" class="w-full h-full object-cover" alt="3">
                   </button>
                 </div>
@@ -379,7 +390,7 @@
               <div class="p-3.5 sm:p-5 bg-slate-900 space-y-2 sm:space-y-2.5">
                 <div class="flex items-center justify-between gap-2">
                   <h3 id="heroVisualTitle" class="font-bold text-white text-sm sm:text-base truncate">Luxury 1/2/3 BHK Builder Floor</h3>
-                  <span class="text-[11px] sm:text-xs text-emerald-400 font-semibold flex items-center gap-1 shrink-0">
+                  <span class="text-[11px] sm:text-xs text-emerald-400 font-semibold flex items-center gap-1 shrink-0 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800">
                     <span class="material-symbols-outlined text-xs sm:text-sm">verified</span> Verified
                   </span>
                 </div>
@@ -387,49 +398,54 @@
                 <p class="text-[11px] sm:text-xs text-slate-400 line-clamp-1">With Automatic Lift, Covered Stilt Car Parking &amp; Modular Kitchen</p>
 
                 <!-- Micro Amenities Row -->
-                <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[10px] sm:text-[11px] text-slate-300">
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">elevator</span> Lift</span>
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">directions_car</span> Parking</span>
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">account_balance</span> Loan 90%</span>
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">train</span> 5 Min Metro</span>
+                <div class="grid grid-cols-4 gap-1 sm:gap-1.5 pt-2 border-t border-slate-800 text-[10px] sm:text-[11px] text-slate-300 text-center">
+                  <div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-slate-800/60">
+                    <span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">elevator</span> Lift
+                  </div>
+                  <div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-slate-800/60">
+                    <span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">directions_car</span> Parking
+                  </div>
+                  <div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-slate-800/60">
+                    <span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">account_balance</span> Loan 90%
+                  </div>
+                  <div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-slate-800/60">
+                    <span class="material-symbols-outlined text-[13px] sm:text-[14px] text-blue-400">train</span> 5m Metro
+                  </div>
                 </div>
               </div>
 
             </div>
 
-            <!-- ============================================ -->
-            <!-- FLOATING MOTION GRAPHICS BADGES & PILLS      -->
-            <!-- ============================================ -->
-
-            <!-- Floating Card 1: Google Reviews (Top Right) -->
-            <div class="absolute -top-3 right-0 sm:-top-4 sm:-right-4 z-30 animate-float-slow bg-white text-slate-900 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-m3-3 border border-slate-200/80 flex items-center gap-2 sm:gap-3 max-w-[190px] sm:max-w-none">
-              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 font-bold shrink-0">
-                <span class="material-symbols-outlined text-lg sm:text-xl">star</span>
-              </div>
-              <div class="text-left">
-                <div class="flex items-center gap-1">
-                  <span class="font-extrabold text-xs sm:text-sm text-slate-900">4.9 / 5.0</span>
-                  <span class="text-amber-500 text-[10px] sm:text-xs">★★★★★</span>
+            <!-- ============================================================== -->
+            <!-- DEDICATED TRUST BADGES (REDESIGNED TO NEVER OVERLAP THE IMAGE)  -->
+            <!-- ============================================================== -->
+            <div class="grid grid-cols-2 gap-2.5 sm:gap-3.5 w-full pt-3 sm:pt-4 z-10">
+              
+              <!-- Redesigned Badge 1: Google Rating -->
+              <div class="bg-white rounded-2xl p-2.5 sm:p-3.5 shadow-m3-2 border border-slate-200/90 flex items-center gap-2 sm:gap-3 hover:shadow-m3-3 transition-shadow">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-500 font-bold shrink-0">
+                  <span class="material-symbols-outlined text-lg sm:text-2xl">star</span>
                 </div>
-                <span class="text-[9px] sm:text-[10px] text-slate-500 font-medium block truncate">Google Maps Verified</span>
+                <div class="min-w-0 text-left">
+                  <div class="flex items-center gap-1">
+                    <span class="font-extrabold text-xs sm:text-sm text-slate-900">4.9 / 5.0</span>
+                    <span class="text-amber-500 text-[10px] sm:text-xs">★★★★★</span>
+                  </div>
+                  <span class="text-[9px] sm:text-[10px] text-slate-500 font-medium block truncate">Google Maps Verified</span>
+                </div>
               </div>
-            </div>
 
-            <!-- Floating Card 2: Legal Registry Verified (Bottom Left) -->
-            <div class="absolute -bottom-3 left-0 sm:-bottom-4 sm:-left-4 z-30 animate-float-medium bg-white text-slate-900 rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-m3-3 border border-slate-200/80 flex items-center gap-2 sm:gap-3 max-w-[190px] sm:max-w-none">
-              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold shrink-0">
-                <span class="material-symbols-outlined text-lg sm:text-xl">verified_user</span>
+              <!-- Redesigned Badge 2: 100% Freehold Title -->
+              <div class="bg-white rounded-2xl p-2.5 sm:p-3.5 shadow-m3-2 border border-slate-200/90 flex items-center gap-2 sm:gap-3 hover:shadow-m3-3 transition-shadow">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 font-bold shrink-0">
+                  <span class="material-symbols-outlined text-lg sm:text-2xl">verified_user</span>
+                </div>
+                <div class="min-w-0 text-left">
+                  <div class="font-extrabold text-xs sm:text-sm text-slate-900 truncate">100% Freehold Title</div>
+                  <span class="text-[9px] sm:text-[10px] text-emerald-700 font-semibold block truncate">Government Registry</span>
+                </div>
               </div>
-              <div class="text-left">
-                <div class="font-extrabold text-[11px] sm:text-xs text-slate-900 truncate">100% Freehold Title</div>
-                <span class="text-[9px] sm:text-[10px] text-emerald-700 font-semibold block truncate">Government Registry</span>
-              </div>
-            </div>
 
-            <!-- Floating Pill 3: Instant Lead Connect (Middle Right) -->
-            <div class="hidden sm:flex absolute top-1/2 -right-6 z-30 animate-float-fast bg-slate-900/90 text-white rounded-full px-3.5 py-1.5 shadow-m3-2 border border-white/20 backdrop-blur-md items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span class="text-[11px] font-semibold text-slate-200">Consultant Online Now</span>
             </div>
 
           </div>
